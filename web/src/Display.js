@@ -8,6 +8,11 @@ function Display() {
 		let renderer = new THREE.WebGLRenderer();
 
 		renderer.setSize(window.innerWidth, window.innerHeight);
+		window.addEventListener('resize', () => {
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			camera.aspect = window.innerWidth / window.innerHeight;
+    		camera.updateProjectionMatrix();	
+		});
 		document.getElementById('root').appendChild(renderer.domElement);
 
 		let geometry = new THREE.BoxGeometry(1,1,1);
